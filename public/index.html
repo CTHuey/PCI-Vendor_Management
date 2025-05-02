@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCI Vendor Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loginSection" class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerSection" class="container mt-5" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Register</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="regEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="regEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="regPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="regPassword" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboardSection" class="container mt-4" style="display: none;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+            <div class="container">
+                <a class="navbar-brand" href="#">PCI Vendor Management</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showAddVendor()">Add Vendor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Vendor Management Dashboard</h2>
+            <div>
+                <button class="btn btn-success" onclick="exportData()">Export Data</button>
+            </div>
+        </div>
+
+        <div id="vendorCards" class="row">
+            <!-- Vendor cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div id="addVendorSection" class="container mt-4" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Add New Vendor</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="vendorForm">
+                            <div class="mb-3">
+                                <label for="service_provider_name" class="form-label">Service Provider Name</label>
+                                <input type="text" class="form-control" id="service_provider_name" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="pci_requirements" class="form-label">PCI Requirements Covered</label>
+                                <textarea class="form-control" id="pci_requirements" rows="3" required></textarea>
+                                <small class="form-text text-muted">List the PCI requirements that the vendor covers (e.g., 12.8.1, 12.8.2, etc.)</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="services_provided" class="form-label">Services Provided</label>
+                                <textarea class="form-control" id="services_provided" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="aoc_expiration_date" class="form-label">AOC Expiration Date</label>
+                                <input type="date" class="form-control" id="aoc_expiration_date" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="contact_name" class="form-label">Service Provider Contact Name</label>
+                                <input type="text" class="form-control" id="contact_name" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="contact_email" class="form-label">Contact Email</label>
+                                <input type="email" class="form-control" id="contact_email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="aoc_document" class="form-label">AOC Document (PDF)</label>
+                                <input type="file" class="form-control" id="aoc_document" accept=".pdf">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="roles_responsibilities" class="form-label">Roles & Responsibilities Document (PDF)</label>
+                                <input type="file" class="form-control" id="roles_responsibilities" accept=".pdf">
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Add Vendor</button>
+                                <button type="button" class="btn btn-secondary" onclick="showDashboard()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

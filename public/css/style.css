@@ -1,0 +1,64 @@
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.btn-warning {
+    color: #fff;
+}
+
+.alert {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+textarea.form-control {
+    min-height: 100px;
+}
+
+.navbar {
+    margin-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.vendor-card {
+    margin-bottom: 1.5rem;
+}
+
+.vendor-card .card-body {
+    padding: 1.25rem;
+}
+
+.vendor-card .card-footer {
+    padding: 0.75rem 1.25rem;
+}
+
+.document-link {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.expiration-warning {
+    color: #dc3545;
+    font-weight: bold;
+} 
